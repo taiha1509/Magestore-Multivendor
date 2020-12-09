@@ -11,7 +11,7 @@
             <?php
                 foreach ($collection as $vendorModel) : ?>
             <li>
-                <a href="<?php echo $block->getStoreManager()->getStore()->getUrl('multivendor/vendor/view') . 'id/' . $vendorModel->getId(); ?>">
+                <a href="<?php echo $block->getStoreManager()->getStore()->getUrl('multivendor/vendor/View') . 'id/' . $vendorModel->getId(); ?>">
                     <?php
                         $img = $block->getMediaUrlImage($vendorModel->getLogo());
                         ?>

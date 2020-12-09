@@ -23,18 +23,22 @@ class VendorInfo extends \Magento\Framework\View\Element\Template
     public function getVendorModel()
     {
         $id = $this->getRequest()->getParam('id');
-        $vendorProductModel = $this->_objectManager->create('Magestore\Multivendor\Model\ResourceModel\VendorProduct\Collection')
-            ->addFieldToFilter('product_ids', array('finset' => array($id)))
-            ->getFirstItem();
-        if ($vendorProductModel->getId()) {
-            $vendorId = $vendorProductModel->getData('vendor_id');
-            if ($vendorId) {
-                $vendorModel = $this->_objectManager->create('Magestore\Multivendor\Model\Vendor')
-                    ->load($vendorId);
-                if ($vendorModel->getId()) {
-                    return $vendorModel;
-                }
-            }
+//        $vendorProductModel = $this->_objectManager->create('Magestore\Multivendor\Model\ResourceModel\VendorProduct\Collection')
+//            ->addFieldToFilter('product_ids', array('finset' => array($id)))
+//            ->getFirstItem();
+//        if ($vendorProductModel->getId()) {
+//            $vendorId = $vendorProductModel->getData('vendor_id');
+//            if ($vendorId) {
+//                $vendorModel = $this->_objectManager->create('Magestore\Multivendor\Model\Vendor')
+//                    ->load($vendorId);
+//                if ($vendorModel->getId()) {
+//                    return $vendorModel;
+//                }
+//            }
+//        }
+        if($id){
+            $vendorModel = $this->_objectManager->create('Magestore\Multivendor\Model\Vendor')->load($id);
+            return $vendorModel;
         }
         return null;
     }
